@@ -130,6 +130,7 @@ header a:hover {
 }
 
 #boxes .box{
+    margin-bottom: 0.5rem;
     float: left;
     left: 10px;
     text-align: center;
