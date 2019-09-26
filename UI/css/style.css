@@ -65,6 +65,7 @@ header #branding h1{
     margin: 0;
 }
 
+
 header nav{
     float: right;
     margin-top: 10px;
@@ -83,34 +84,32 @@ header a:hover {
 /* more information */
 
 #showcase{
-    min-height: 400px;
-    background: url('../img/showcase.jpg') no-repeat 0 -400px;
+    min-height: 550px;
+    background: url('../img/ra-dragon-vs1AkIVMrMU-unsplash.jpg')center/cover no-repeat border-box;
     text-align: center;
     color: #ffffff;
 }
 
-#showcase h1{
-    margin-top: 100px;
-    font-size: 55px;
-    margin-bottom: 10px;
-}
+
 
 #showcase p{
-    font-size: 20px;
-
+    font-size: 25px;
+    position: absolute;
+    bottom: 4%;
+    left: 1%;
 }
 
 /* NewsLetter */
 
 
 #newsletter{
-    padding: 15px;
+    padding: 8px;
     color: #ffffff;
     background: #35424a;
 }
 
 #newsletter h1{
-    float: left;
+    text-align: center;
 }
 
 #newsletter form{
@@ -132,13 +131,18 @@ header a:hover {
 
 #boxes .box{
     float: left;
+    left: 10px;
     text-align: center;
     width: 30%;
     padding: 10px;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 #boxes .box img{
-    width: 90px;
+    width: 200px;
+    height: 150px;
+    border-radius: 45%;
 }
 
 aside#sidebar{
