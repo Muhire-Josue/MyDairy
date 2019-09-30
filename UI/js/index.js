@@ -1,4 +1,4 @@
-var ALERT_TITLE = "Deletion!!!";
+var ALERT_TITLE = "Notification!!!";
 var ALERT_BUTTON_TEXT = "Ok";
 
 if (document.getElementById) {
