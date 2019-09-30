@@ -3,6 +3,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #f4f4f4;
+    transition: .5s ease;
 }
 
 /* Global */
@@ -11,6 +12,7 @@ body {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    transition: .5s ease;
 }
 
 ul {
@@ -88,6 +90,7 @@ header a:hover {
     background: url('../img/ra-dragon-vs1AkIVMrMU-unsplash.jpg')center/cover no-repeat border-box;
     text-align: center;
     color: #ffffff;
+    transition: .5s ease;
 }
 
 #showcase p {
@@ -304,13 +307,59 @@ input, aside#sidebar .quote textarea {
 
 /* success banner */
 
-#banner{
+#banner {
     text-align: center;
     padding: 3px;
     background: #20e655;
     color: #f4f4f4;
     min-width: 80%;
     margin-bottom: 2rem;
+}
+
+/* content of a specific diary */
+
+#diary-content {
+    color: gray;
+    width: 60%;
+    height: 63vh;
+    border: 0.5px solid gray;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    left: 25%;
+    margin-left: -50px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+#diary-title h2 {
+    margin-top: 3rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: #696565;
+}
+
+#diary-title span {
+    color: #f08568;
+}
+
+.diary-content a {
+    display: block;
+    height: 20px;
+    background: #e8491d;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    width: 55px;
+    position: relative;
+    transition: .5s ease;
+    top: 103%;
+    left: 17%
 }
 
 /* Footer */
@@ -327,17 +376,37 @@ footer {
 
 @media(max-width: 768px) {
     header #branding, header nav, header nav li, #newsletter h1, #newsletter form, #boxes .box, article#main-col, aside#sidebar, .new-diary {
-        float: none;
+        float: left;
         text-align: center;
         width: 100%;
+        padding-bottom: 8px;
+        
     }
+
+    #diary-content {
+        float: none;
+        text-align: center;
+        width: 80%;
+        position: relative;
+        left: 7%;
+        height: auto;
+        margin-left: -50px;
+    }
+
+    .diary-content a {
+        position: relative;
+        transition: .5s ease;
+        top: 170%;
+        left: 22%
+    }
+
     header {
         padding-bottom: 20px;
     }
     #showcase h1 {
         margin-top: 40px;
     }
-    .new-diary h2{
+    .new-diary h2 {
         text-align: center;
     }
     #newsletter button, .quote button, .signup-form a {
@@ -426,6 +495,7 @@ main {
     color: #ffffff;
     width: 55px;
 }
+
 
 .signup-form button[type="submit"]:hover {
     background: #ffffff;
