@@ -4,8 +4,9 @@
   "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 --exit  server/tests/*",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
