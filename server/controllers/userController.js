@@ -45,6 +45,34 @@ class userController {
       data,
     });
   }
+
+  static Login(req, res) {
+    const { email, password } = req.body;
+    const user = findByEmail(email);
+    if (user) {
+      const comparePassword = hash.compareSync(password, user.password);
+      if (!comparePassword) {
+        return res.status(400).json({
+          status: 400,
+          error: 'Password do not match',
+        });
+      }
+      const token = jwt.sign({ firstname: user.firstname, lastname: user.lastname, email: user.email }, process.env.API_SERCRET_KEY);
+      const data = {
+        token, id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
+      };
+      return res.status(200).json({
+        status: 200,
+        message: 'User logged in successfully!',
+        data,
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      error: 'User not found',
+    });
+  }
 }
+
 
 export default userController;
