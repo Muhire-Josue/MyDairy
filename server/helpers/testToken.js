@@ -1,0 +1,2 @@
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJKb3N1ZSIsImxhc3RuYW1lIjoiTXVoaXJlIiwiZW1haWwiOiJ1c2VyMUBleGFsLmNvbSIsImlhdCI6MTU3MDA5NTYyMH0.6jtnP9jHnjIhm_Su6oY9bnOVgR6L2Bl6GOWup9bAyho';
+export default userToken;
