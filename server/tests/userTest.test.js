@@ -63,4 +63,49 @@ describe('User tests', () => {
         done();
       });
   });
+
+  it('Should login a user', (done) => {
+    const user = {
+      email: 'user2@example.com',
+      password: 'user4',
+    };
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        expect(res.body.message).to.equal('User logged in successfully!');
+        done();
+      });
+  });
+
+  it('Should not login non-existing user', (done) => {
+    const user = {
+      email: 'us@example.com',
+      password: 'user4',
+    };
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .end((error, res) => {
+        res.body.status.should.be.equal(404);
+        expect(res.body.error).to.equal('User not found');
+        done();
+      });
+  });
+
+  it('Should not login provided incorrect password', (done) => {
+    const user = {
+      email: 'user2@example.com',
+      password: 'user',
+    };
+    chai.request(server)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Password do not match');
+        done();
+      });
+  });
 });
