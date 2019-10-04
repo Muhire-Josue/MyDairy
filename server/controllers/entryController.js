@@ -53,6 +53,36 @@ class entryController {
       data: entry,
     });
   }
+
+  static modify(req, res) {
+    const id = parseInt(req.params.entryId);
+    if (!Number.isInteger(id)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid id',
+      });
+    }
+    const entryIndex = helperFunction.findEntryIndex(id);
+    if (!Entry[entryIndex]) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Entry not found',
+      });
+    }
+    const validateEntry = entrySchema.validate({
+      id: Entry[entryIndex].id, title: req.body.title, description: req.body.description,
+    });
+    if (validateEntry.error) {
+      return res.status(400).json({ status: 400, error: validateEntry.error.details[0].message });
+    }
+    Entry[entryIndex].title = req.body.title;
+    Entry[entryIndex].description = req.body.description;
+    return res.status(200).json({
+      status: 200,
+      message: 'Entry successfully edited!',
+      data: Entry[entryIndex],
+    });
+  }
 }
 
 export default entryController;
