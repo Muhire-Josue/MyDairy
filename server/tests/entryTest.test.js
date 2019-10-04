@@ -117,4 +117,59 @@ describe('Entries test', () => {
         done();
       });
   });
+
+  it('should modify an entry', (done) => {
+    const entry = {
+      title: 'friday morning',
+      description: 'how intresting!!!',
+    };
+
+    chai.request(server)
+      .patch('/api/v1/entries/1')
+      .send(entry)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        expect(res.body.message).to.equal('Entry successfully edited!');
+        done();
+      });
+  });
+
+  it('should not modify an entry provided invalid id', (done) => {
+    chai.request(server)
+      .patch('/api/v1/entries/abc')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Please provide a valid id');
+        done();
+      });
+  });
+
+  it('should not modify an entry provided non-existing id', (done) => {
+    chai.request(server)
+      .patch('/api/v1/entries/100')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(404);
+        expect(res.body.error).to.equal('Entry not found');
+        done();
+      });
+  });
+
+  it('should not modify entry provided invalid input', (done) => {
+    const entry = {
+      title: 'Tuestday morning',
+      descriptionsss: 'how intresting!',
+    };
+
+    chai.request(server)
+      .patch('/api/v1/entries/1')
+      .send(entry)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        done();
+      });
+  });
 });

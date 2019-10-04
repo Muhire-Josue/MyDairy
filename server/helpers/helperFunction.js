@@ -9,6 +9,10 @@ class helperFunction {
   static findById(id) {
     return Entry.find(e => e.id === id);
   }
+
+  static findEntryIndex(id) {
+    return Entry.findIndex(e => e.id === id);
+  }
 }
 
 export default helperFunction;
