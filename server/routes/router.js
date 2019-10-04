@@ -6,8 +6,10 @@ import auth from '../middlewares/auth';
 const router = express.Router();
 
 router.get('/api/v1/auth/', userController.entryMessage);
+router.get('/api/v1/entries', auth, entryController.allEntries);
 router.post('/api/v1/auth/signup', userController.createAccount);
 router.post('/api/v1/auth/signin', userController.Login);
 router.post('/api/v1/entries', auth, entryController.addEntry);
+
 
 export default router;

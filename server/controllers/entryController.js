@@ -14,13 +14,20 @@ class entryController {
     if (validateEntry.error) {
       return res.status(400).json({ status: 400, error: validateEntry.error.details[0].message });
     }
-    Entry.push(entry);
     const data = entry;
     data.createdOn = `${date} ${time}`;
+    Entry.push(data);
     return res.status(201).json({
       status: 201,
       message: 'Entry successfully created',
       data,
+    });
+  }
+
+  static allEntries(req, res) {
+    return res.status(200).json({
+      status: 200,
+      data: Entry,
     });
   }
 }
