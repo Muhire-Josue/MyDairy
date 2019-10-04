@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import User from '../models/users';
 import userSchema from '../validations/userValidation';
-import findByEmail from '../helpers/helperFunction';
+import helperFunction from '../helpers/helperFunction';
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ class userController {
     if (validateUser.error) {
       return res.status(400).json({ status: 400, error: validateUser.error.details[0].message });
     }
-    const duplicatedUser = findByEmail(user.email);
+    const duplicatedUser = helperFunction.findByEmail(user.email);
     if (duplicatedUser) {
       return res.status(409).json({
         status: 409,
@@ -48,7 +48,7 @@ class userController {
 
   static Login(req, res) {
     const { email, password } = req.body;
-    const user = findByEmail(email);
+    const user = helperFunction.findByEmail(email);
     if (user) {
       const comparePassword = hash.compareSync(password, user.password);
       if (!comparePassword) {
