@@ -85,4 +85,36 @@ describe('Entries test', () => {
         done();
       });
   });
+
+  it('should get an entry', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries/1')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        done();
+      });
+  });
+
+  it('should not get an entry provided non-existing id', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries/100')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(404);
+        expect(res.body.error).to.equal('Entry not found');
+        done();
+      });
+  });
+
+  it('should not get an entry provided invalid id', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries/abc')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Please provide a valid id');
+        done();
+      });
+  });
 });
