@@ -75,4 +75,14 @@ describe('Entries test', () => {
         done();
       });
   });
+
+  it('should get all entries', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        done();
+      });
+  });
 });
