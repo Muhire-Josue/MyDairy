@@ -54,7 +54,7 @@ class entryController {
     });
   }
 
-  static modify(req, res) {
+  static modifyEntry(req, res) {
     const id = parseInt(req.params.entryId);
     if (!Number.isInteger(id)) {
       return res.status(400).json({
@@ -81,6 +81,28 @@ class entryController {
       status: 200,
       message: 'Entry successfully edited!',
       data: Entry[entryIndex],
+    });
+  }
+
+  static deleteEntry(req, res) {
+    const id = parseInt(req.params.entryId);
+    if (!Number.isInteger(id)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please provide a valid id',
+      });
+    }
+    const entry = helperFunction.findById(id);
+    if (!entry) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Entry not found',
+      });
+    }
+    helperFunction.deleteEntryById(id);
+    return res.status(200).json({
+      status: 204,
+      message: 'Entry successfully deleted!',
     });
   }
 }

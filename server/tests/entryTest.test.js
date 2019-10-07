@@ -172,4 +172,36 @@ describe('Entries test', () => {
         done();
       });
   });
+
+  it('should delete an entry', (done) => {
+    chai.request(server)
+      .delete('/api/v1/entries/1')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(204);
+        expect(res.body.message).to.equal('Entry successfully deleted!');
+        done();
+      });
+  });
+  it('should not delete an entry provided non-existing id', (done) => {
+    chai.request(server)
+      .delete('/api/v1/entries/100')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(404);
+        expect(res.body.error).to.equal('Entry not found');
+        done();
+      });
+  });
+
+  it('should not delete an entry provided invalid id', (done) => {
+    chai.request(server)
+      .delete('/api/v1/entries/abc')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Please provide a valid id');
+        done();
+      });
+  });
 });

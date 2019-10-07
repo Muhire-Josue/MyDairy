@@ -13,6 +13,12 @@ class helperFunction {
   static findEntryIndex(id) {
     return Entry.findIndex(e => e.id === id);
   }
+
+  static deleteEntryById(id) {
+    const entry = helperFunction.findById(id);
+    const entryIndex = Entry.indexOf(entry);
+    return Entry.splice(entryIndex, 1);
+  }
 }
 
 export default helperFunction;
