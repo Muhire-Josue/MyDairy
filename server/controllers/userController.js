@@ -20,7 +20,9 @@ class userController {
     const user = req.body;
     user.id = User.length + 1;
     user.password = hash.hashSync(user.password);
-    const token = jwt.sign({ firstname: user.firstname, lastname: user.lastname, email: user.email }, process.env.API_SERCRET_KEY);
+    const token = jwt.sign({
+      id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
+    }, process.env.API_SERCRET_KEY);
     const validateUser = userSchema.validate({
       id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email, password: req.body.password,
     });

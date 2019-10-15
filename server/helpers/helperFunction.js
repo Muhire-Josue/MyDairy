@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable radix */
 import User from '../models/users';
 import Entry from '../models/entries';
 

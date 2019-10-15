@@ -10,7 +10,7 @@ const { expect } = chai;
 describe('User tests', () => {
   it('should display a welcome message', (done) => {
     chai.request(server)
-      .get('/api/v1/auth/')
+      .get('/api/v1/')
       .end((error, res) => {
         res.body.status.should.be.equal(200);
         expect(res.body.message).to.equal('welcome to MyDiary application');
