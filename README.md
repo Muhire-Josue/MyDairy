@@ -3,7 +3,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 
 
 ### Links
-##### gh-pages:  https://muhire-josue.github.io/MyDairy/UI/index.html
+##### gh-pages:  https://muhire-josue.github.io/MyDairy/UI/
 ##### heroku:  https://mydiary-api-host.herokuapp.com
 
 ### Requirements
