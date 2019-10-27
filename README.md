@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Muhire-Josue/MyDairy.svg?branch=develop)](https://travis-ci.org/Muhire-Josue/MyDairy)
+[![Build Status](https://travis-ci.org/Muhire-Josue/MyDairy.svg?branch=develop)](https://travis-ci.org/Muhire-Josue/MyDairy) [![Coverage Status](https://coveralls.io/repos/github/Muhire-Josue/MyDairy/badge.svg?branch=develop)](https://coveralls.io/github/Muhire-Josue/MyDairy?branch=develop)
 
 # MyDairy
 MyDiary is an online journal where users can pen down their thoughts and feelings.  
