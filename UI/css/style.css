@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
@@ -25,7 +29,7 @@ ul {
     background: #e8491d;
     border: none;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 15px;
     color: #ffffff;
 }
 
@@ -326,7 +330,7 @@ input, aside#sidebar .quote textarea {
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
     left: 25%;
     margin-left: -50px;
     padding: 15px;
@@ -347,7 +351,7 @@ input, aside#sidebar .quote textarea {
 
 .diary-content a {
     display: block;
-    height: 20px;
+    height: 46px;
     background: #e8491d;
     text-decoration: none;
     font-weight: bold;
@@ -355,11 +359,11 @@ input, aside#sidebar .quote textarea {
     padding: 10px;
     color: #ffffff;
     margin-bottom: 1rem;
-    width: 55px;
+    width: 70px;
     position: relative;
     transition: .5s ease;
-    top: 103%;
-    left: 17%
+    top: 102%;
+    left: 18.5%
 }
 
 /* Footer */
@@ -406,6 +410,11 @@ footer {
     #showcase h1 {
         margin-top: 40px;
     }
+    #showcase p {
+        font-size: 20px;
+        top: auto;
+        left: 1%;
+    }
     .new-diary h2 {
         text-align: center;
     }
@@ -445,8 +454,8 @@ main {
 .signup-form label, .signup-form input {
     display: block;
     margin-top: 1rem;
-    width: 90%;
-    height: 3.5vh;
+    width: 100%;
+    height: 5.5vh;
 }
 
 .signup-form input[id*="terms"], .signup-form input[id*="terms"]+label {
@@ -471,8 +480,8 @@ main {
 .signup-form input[type="checkbox"] {
     border: 1px solid #ccc;
     background: white;
-    width: 1rem;
-    height: 1rem;
+    width: 3rem;
+    height: 3rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -486,14 +495,27 @@ main {
 .signup-form a {
     display: block;
     margin-top: 1rem;
-    height: 25px;
+    height: 40px;
     background: #e8491d;
     text-decoration: none;
     font-weight: bold;
     border: none;
     padding: 10px;
     color: #ffffff;
-    width: 55px;
+    width: 75px;
+}
+
+.quote a {
+    display: block;
+    margin-top: 1rem;
+    height: 40px;
+    background: #e8491d;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    color: #ffffff;
+    width: 75px;
 }
 
 .signup-form button[type="submit"]:hover {
