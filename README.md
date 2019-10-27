@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Muhire-Josue/MyDairy.svg?branch=develop)](https://travis-ci.org/Muhire-Josue/MyDairy)
+
 # MyDairy
 MyDiary is an online journal where users can pen down their thoughts and feelings.  
 
