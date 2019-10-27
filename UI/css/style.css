@@ -367,13 +367,14 @@ input, aside#sidebar .quote textarea {
 }
 
 /* Footer */
-
 footer {
     padding: 20px;
     margin-top: 20px;
     color: #ffffff;
     background-color: #e8491d;
     text-align: center;
+    width: 100%;
+    border: solid 1px red;
 }
 
 /* Media Queries */

@@ -45,3 +45,20 @@ function removeCustomAlert() {
 function ful() {
     alert('Alert this pages');
 }
+
+function setSectionHeight() {
+    document.querySelector('#main').style.minHeight = `${window.innerHeight - 200}px`;
+    document.querySelector('#showcase p').style.top = `${document.querySelector('#showcase').clientHeight}px`;
+
+};
+
+window.addEventListener('DOMContentLoaded', function() {
+    setSectionHeight();
+});
+
+window.addEventListener('resize', function() {
+    setSectionHeight();
+})
+window.addEventListener('scroll', function() {
+    setSectionHeight();
+})
