@@ -184,7 +184,7 @@ ul#services li {
 
 input, aside#sidebar .quote textarea {
     width: 90%;
-    padding: 5px;
+    padding: 15px;
 }
 
 /* Diaries buttons */
@@ -273,10 +273,10 @@ input, aside#sidebar .quote textarea {
 
 .new-diary input {
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-weight: bold;
-    width: 400px;
-    height: 35px;
+    width: 650px;
+    height: 40px;
     padding: 6px 15px;
     border-radius: 5px;
     outline: none;
@@ -288,9 +288,10 @@ input, aside#sidebar .quote textarea {
     width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
-    width: 400px;
-    height: 300px;
-    padding: 6px 15px;
+    width: 650px;
+    height: 400px;
+    padding: 4px;
+    padding-left: 30px;
     border-radius: 5px;
     outline: none;
     border: none;
@@ -445,30 +446,25 @@ main {
 }
 
 .signup-form {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .signup-form label {
     font-weight: bold;
 }
 
-.signup-form label, .signup-form input {
+.signup-form label {
     display: block;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    padding-top: 13px;
+    padding-bottom: 3px;;
     width: 100%;
     height: 5.5vh;
 }
-
-.signup-form input[id*="terms"], .signup-form input[id*="terms"]+label {
-    display: inline-block;
-    width: auto;
-    vertical-align: bottom;
-}
-
-.signup-form input:not([type="checkbox"]), .signup-form select {
-    border: 1px solid #ccc;
-    padding: 0.2rem 0.5rem;
-    font: inherit;
+.signup-form input {
+    display: block;
+    width: 100%;
+    height: 5.5vh;
 }
 
 .signup-form input:focus, .signup-form select:focus {
@@ -476,21 +472,6 @@ main {
     background: #d8f3df;
     border-color: #2ddf5c;
     border-radius: 12px;
-}
-
-.signup-form input[type="checkbox"] {
-    border: 1px solid #ccc;
-    background: white;
-    width: 3rem;
-    height: 3rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-.signup-form input[type="checkbox"]:checked {
-    background: #2ddf5c;
-    border: #0e4f1f;
 }
 
 .signup-form a {
