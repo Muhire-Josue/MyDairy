@@ -1,5 +1,6 @@
-var ALERT_TITLE = "Notification!!!";
-var ALERT_BUTTON_TEXT = "Ok";
+let ALERT_TITLE = "Notification!!!";
+let ALERT_BUTTON_TEXT = "CONFIRM";
+let ALERT_BUTTON_TEXT_2 = "CANCEL";
 
 if (document.getElementById) {
     window.alert = function (txt) {
@@ -31,6 +32,12 @@ function createCustomAlert(txt) {
     btn = alertObj.appendChild(d.createElement("a"));
     btn.id = "closeBtn";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+    btn.href = "#";
+    btn.focus();
+    btn.onclick = function () { removeCustomAlert(); return false; }
+    btn = alertObj.appendChild(d.createElement("a"));
+    btn.id = "cancelBtn";
+    btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT_2));
     btn.href = "#";
     btn.focus();
     btn.onclick = function () { removeCustomAlert(); return false; }
