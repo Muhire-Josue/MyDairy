@@ -88,6 +88,16 @@ describe('Entries test', () => {
       });
   });
 
+  it('should not be able to get other users entry', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries/1')
+      .set('Authorization', `Bearer ${otherUserToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(403);
+        done();
+      });
+  });
+
   it('should get all entries', (done) => {
     chai.request(server)
       .get('/api/v1/entries')
