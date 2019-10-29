@@ -39,75 +39,40 @@ class entryController {
 
   static getEntry(req, res) {
     const id = parseInt(req.params.entryId);
-    if (!Number.isInteger(id)) {
-      return res.status(400).json({ status: 400, error: 'Please provide a valid id' });
-    }
     const entry = helperFunction.findById(id);
-    if (!entry) {
-      return res.status(404).json({ status: 404, error: 'Entry not found' });
-    }
-    if (entry.userId === parseInt(req.user.id)) {
-      return res.status(200).json({ status: 200, data: entry });
-    }
-    return res.status(403).json({ status: 403, error: 'Operation forbiden' });
+    return res.status(200).json({ status: 200, data: entry });
   }
 
   static modifyEntry(req, res) {
     const id = parseInt(req.params.entryId);
-    if (!Number.isInteger(id)) {
-      return res.status(400).json({ status: 400, error: 'Please provide a valid id' });
-    }
     const entryIndex = helperFunction.findEntryIndex(id);
-
-    if (!Entry[entryIndex]) {
-      return res.status(404).json({ status: 404, error: 'Entry not found' });
+    const validateEntry = entrySchema.validate({
+      id: Entry[entryIndex].id, title: req.body.title, description: req.body.description,
+    });
+    if (validateEntry.error) {
+      return res.status(400).json({ status: 400, error: validateEntry.error.details[0].message });
     }
-    if (Entry[entryIndex].userId === parseInt(req.user.id)) {
-      const validateEntry = entrySchema.validate({
-        id: Entry[entryIndex].id, title: req.body.title, description: req.body.description,
-      });
-      if (validateEntry.error) {
-        return res.status(400).json({ status: 400, error: validateEntry.error.details[0].message });
-      }
-      Entry[entryIndex].title = req.body.title;
-      Entry[entryIndex].description = req.body.description;
-      return res.status(200).json({
-        status: 200,
-        message: 'Entry successfully edited!',
-        data: {
-          id: Entry[entryIndex].id,
-          title: Entry[entryIndex].title,
-          description: Entry[entryIndex].description,
-          createdOn: Entry[entryIndex].createdOn,
-        },
-      });
-    }
-    return res.status(403).json({ status: 403, error: 'Operation forbiden' });
+    Entry[entryIndex].title = req.body.title;
+    Entry[entryIndex].description = req.body.description;
+    return res.status(200).json({
+      status: 200,
+      message: 'Entry successfully edited!',
+      data: {
+        id: Entry[entryIndex].id,
+        title: Entry[entryIndex].title,
+        description: Entry[entryIndex].description,
+        createdOn: Entry[entryIndex].createdOn,
+      },
+    });
   }
 
   static deleteEntry(req, res) {
     const id = parseInt(req.params.entryId);
-    if (!Number.isInteger(id)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Please provide a valid id',
-      });
-    }
-    const entry = helperFunction.findById(id);
-    if (!entry) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Entry not found',
-      });
-    }
-    if (entry.userId === parseInt(req.user.id)) {
-      helperFunction.deleteEntryById(id);
-      return res.status(200).json({
-        status: 204,
-        message: 'Entry successfully deleted!',
-      });
-    }
-    return res.status(403).json({ status: 403, error: 'Operation forbiden' });
+    helperFunction.deleteEntryById(id);
+    return res.status(200).json({
+      status: 204,
+      message: 'Entry successfully deleted!',
+    });
   }
 }
 
