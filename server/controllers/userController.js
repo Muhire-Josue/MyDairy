@@ -59,7 +59,9 @@ class userController {
           error: 'Password do not match',
         });
       }
-      const token = jwt.sign({ firstname: user.firstname, lastname: user.lastname, email: user.email }, process.env.API_SERCRET_KEY);
+      const token = jwt.sign({
+        id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
+      }, process.env.API_SERCRET_KEY);
       const data = {
         token, id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
       };

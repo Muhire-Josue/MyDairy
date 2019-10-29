@@ -46,7 +46,10 @@ class entryController {
     if (!entry) {
       return res.status(404).json({ status: 404, error: 'Entry not found' });
     }
-    return res.status(200).json({ status: 200, data: entry });
+    if (entry.userId === parseInt(req.user.id)) {
+      return res.status(200).json({ status: 200, data: entry });
+    }
+    return res.status(403).json({ status: 403, error: 'Operation forbiden' });
   }
 
   static modifyEntry(req, res) {
