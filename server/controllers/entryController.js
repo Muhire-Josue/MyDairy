@@ -12,9 +12,6 @@ class entryController {
    *@description Creates diary entry
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} error
-   * @param {string} message
    * @returns {object} response
    */
   static addEntry(req, res) {
@@ -43,7 +40,6 @@ class entryController {
    *@description Returns all user's entries
    * @param {object} req
    * @param {object} res
-   * @param {number} status
    * @returns {Array} response
    */
   static allEntries(req, res) {
@@ -55,7 +51,6 @@ class entryController {
    *@description Returns a diary entry of a user
    * @param {object} req
    * @param {object} res
-   * @param {number} status
    * @returns {object} response
    */
   static getEntry(req, res) {
@@ -69,9 +64,6 @@ class entryController {
    *@description Modifies a diary entry of a user
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} error
-   * @param {string} message
    * @returns {object} response
    */
   static modifyEntry(req, res) {
@@ -95,9 +87,6 @@ class entryController {
    *@description Deletes a diary entry of a user
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} error
-   * @param {string} message
    * @returns {object} response
    */
   static deleteEntry(req, res) {

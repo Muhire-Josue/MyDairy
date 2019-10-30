@@ -1,8 +1,7 @@
 /**
    * @description handles delete response message
    * @param {object} response
-   * @param {number} status
-   * @param {string} error
+   * @param {string} message
    *
    * @returns {object} response
    */

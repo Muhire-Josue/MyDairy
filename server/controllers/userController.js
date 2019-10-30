@@ -15,8 +15,6 @@ class userController {
    *@description Displays a welcome message
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} message
    * @returns {object} response
    */
   static entryMessage(req, res) {
@@ -30,9 +28,6 @@ class userController {
    *@description Creates a user account
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} error
-   * @param {string} message
    * @returns {object} response
    */
 
@@ -67,9 +62,6 @@ class userController {
    *@description It logs in the user
    * @param {object} req
    * @param {object} res
-   * @param {number} status
-   * @param {string} error
-   * @param {string} message
    * @returns {object} response
    */
   static Login(req, res) {
