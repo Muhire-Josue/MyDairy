@@ -9,7 +9,9 @@ app.use(express.json());
 app.use(routes);
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 app.use((req, res, next) => {
-  if (!req.route) { return res.status(400).json({ status: 400, error: 'Incorrect Route' }); }
+  if (!req.route) {
+    return res.status(400).json({ status: 400, error: 'Incorrect Route' });
+  }
   next();
 });
 
