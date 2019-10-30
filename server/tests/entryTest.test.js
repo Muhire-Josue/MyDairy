@@ -108,6 +108,16 @@ describe('Entries test', () => {
       });
   });
 
+  it('should not use non-existing routes', (done) => {
+    chai.request(server)
+      .get('/api/v1/entries/auth/abc')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        done();
+      });
+  });
+
   it('should not get an entry provided non-existing id', (done) => {
     chai.request(server)
       .get('/api/v1/entries/100')
