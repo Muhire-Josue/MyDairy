@@ -23,7 +23,6 @@ describe('Entries test', () => {
       .set('Authorization', `Bearer ${userToken}`)
       .end((error, res) => {
         res.body.status.should.be.equal(201);
-        // return console.log('======>', Entry);
         expect(res.body.message).to.equal('Entry successfully created');
         done();
       });
