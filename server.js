@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-console */
 import express from 'express';
 import routes from './server/routes/router';
@@ -12,7 +11,7 @@ app.use((req, res, next) => {
   if (!req.route) {
     return res.status(400).json({ status: 400, error: 'Incorrect Route' });
   }
-  next();
+  return next();
 });
 
 export default app;
