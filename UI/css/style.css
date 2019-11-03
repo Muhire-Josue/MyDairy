@@ -405,11 +405,49 @@ input, aside#sidebar .quote textarea {
     left: 18.5%
 }
 
+/* profile */
+
+.profile{
+    margin-top: 1rem;
+    background: url("../img/profile.jpg") center/cover no-repeat;
+    height: 50vh;
+    width: 30rem;
+    border-radius: 5rem;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #mentor-title{
+    font-style: italic;
+    color: #e8491d;
+  }
+  
+  .mentor-info{
+    width: 45%;
+    height: 40%;
+    padding-bottom: 1rem;
+    border: 2px solid gray;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  .mentor-info table{
+    padding-top: 1.5rem;
+  }
+  
+  
+  .mentor-info span{
+    font-weight: bold;
+    font-size: 20px;
+    color: #f18466;
+  }
+  
+
 /* Footer */
 
 footer {
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 5px;
     color: #ffffff;
     background-color: #e8491d;
     text-align: center;
@@ -431,6 +469,19 @@ footer {
         text-align: center;
         width: 80%;
         position: relative;
+        left: 7%;
+        height: auto;
+        margin-left: -50px;
+    }
+    .mentor-info{
+        padding-bottom: 1rem;
+        border: 2px solid gray;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        float: none;
+        text-align: center;
+        width: 80%;
         left: 7%;
         height: auto;
         margin-left: -50px;
