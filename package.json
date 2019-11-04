@@ -2,10 +2,18 @@
   "name": "MyDairy",
   "version": "1.0.0",
   "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 --exit  server/tests/*",
+    "dropTables:test": "SET \"NODE_ENV=test\" && babel-node ./server/models/db dropTables",
+    "createTables:test": "SET \"NODE_ENV=test\" && babel-node ./server/models/db createTables",
+    "dropTables:dev": "SET \"NODE_ENV=dev\" && babel-node ./server/models/db dropTables",
+    "createTables:dev": "SET \"NODE_ENV=dev\" && babel-node ./server/models/db createTables",
+    "dropTables": "babel-node ./server/models/db dropTables",
+    "createTables": "babel-node ./server/models/db createTables",
+    "start": "npm run createTables && babel-node app.js --presets @babel/preset-env",
+    "start:dev": "SET \"NODE_ENV=dev\" && nodemon app.js --exec babel-node --presets @babel/preset-env",
+    "test": "npm run dropTables:test && npm run createTables:test && SET \"NODE_ENV=test\" && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/**.js",
+    "test:CI": "npm run dropTables && npm run createTables && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/**.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -20,26 +28,30 @@
   },
   "homepage": "https://github.com/Muhire-Josue/MyDairy#readme",
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "@hapi/joi": "^15.1.0",
-    "babel-cli": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "nodemon": "^1.19.1"
-  },
-  "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.6",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "make-runnable": "^1.3.6",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1",
+    "pg": "^7.12.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1"
+    "regenerator-runtime": "^0.13.3"
   }
 }

@@ -15,7 +15,6 @@ const permission = (req, res, next) => {
   const id = parseInt(req.params.entryId);
   if (!Number.isInteger(id)) {
     return failureResponse(res, 400, 'Please provide a valid id');
-    // return res.status(400).json({ status: 400, error: 'Please provide a valid id' });
   }
   const entry = helperFunction.findById(id);
   if (!entry) {
@@ -26,7 +25,6 @@ const permission = (req, res, next) => {
   }
   if (entry.userId !== parseInt(req.user.id)) {
     return failureResponse(res, 403, 'Operation forbiden');
-    // return res.status(403).json({ status: 403, error: 'Operation forbiden' });
   }
   next();
 };

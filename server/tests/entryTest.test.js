@@ -3,6 +3,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../server';
 import userToken from '../helpers/testToken';
+import testData from '../helpers/mockData';
 
 
 chai.use(chaiHttp);
@@ -12,10 +13,7 @@ const otherUserToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZmlyc3R
 
 describe('Entries test', () => {
   it('should add an entry', (done) => {
-    const entry = {
-      title: 'Tuestday morning',
-      description: 'how intresting!',
-    };
+    const entry = testData[8];
 
     chai.request(server)
       .post('/api/v1/entries')
@@ -29,10 +27,7 @@ describe('Entries test', () => {
   });
 
   it('should not add an entry if user didnot signin', (done) => {
-    const entry = {
-      title: 'Tuestday morning',
-      description: 'how intresting!',
-    };
+    const entry = testData[9];
 
     chai.request(server)
       .post('/api/v1/entries')
@@ -45,10 +40,7 @@ describe('Entries test', () => {
   });
 
   it('should not add an entry provided invalid token', (done) => {
-    const entry = {
-      title: 'Tuestday morning',
-      description: 'how intresting!',
-    };
+    const entry = testData[10];
 
     chai.request(server)
       .post('/api/v1/entries')
@@ -62,10 +54,7 @@ describe('Entries test', () => {
   });
 
   it('should not add invalid input', (done) => {
-    const entry = {
-      title: 'Tuestday morning',
-      descriptionsss: 'how intresting!',
-    };
+    const entry = testData[11];
 
     chai.request(server)
       .post('/api/v1/entries')
@@ -140,10 +129,7 @@ describe('Entries test', () => {
   });
 
   it('should modify an entry', (done) => {
-    const entry = {
-      title: 'friday morning',
-      description: 'how intresting!!!',
-    };
+    const entry = testData[12];
 
     chai.request(server)
       .patch('/api/v1/entries/1')
@@ -157,10 +143,7 @@ describe('Entries test', () => {
   });
 
   it('should not modify an entry of other users', (done) => {
-    const entry = {
-      title: 'friday morning',
-      description: 'how intresting!!!',
-    };
+    const entry = testData[13];
 
     chai.request(server)
       .patch('/api/v1/entries/1')
@@ -196,10 +179,7 @@ describe('Entries test', () => {
   });
 
   it('should not modify entry provided invalid input', (done) => {
-    const entry = {
-      title: 'Tuestday morning',
-      descriptionsss: 'how intresting!',
-    };
+    const entry = testData[14];
 
     chai.request(server)
       .patch('/api/v1/entries/1')
