@@ -12,6 +12,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 - `Nodejs` - a JavaScript run-time environment that executes JavaScript code outside of a browser
 - `NPM` - a package manager for the JavaScript programming language
 - `Git` - version-control system for tracking changes in source code during software development
+- `POSTGRES` - a database management system for data persistence
 
 ### SETUP
 First clone it to your machine: 
