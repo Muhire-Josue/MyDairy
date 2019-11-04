@@ -1,12 +1,14 @@
 /* eslint-disable max-len */
 import hash from 'bcrypt-nodejs';
 import dotenv from 'dotenv';
+import uuid from 'uuid';
 import User from '../models/users';
 import userSchema from '../validations/userValidation';
 import helperFunction from '../helpers/helperFunction';
 import successResponse from '../helpers/successResponse';
 import failureResponse from '../helpers/failureResponse';
 import tokenGenerator from '../helpers/userTokenGenerator';
+import db from '../models/index';
 
 dotenv.config();
 
@@ -31,28 +33,38 @@ class userController {
    * @returns {object} response
    */
 
-  static createAccount(req, res) {
+  static async createAccount(req, res) {
     const user = req.body;
     user.id = User.length + 1;
     user.password = hash.hashSync(user.password);
-    const tokenData = {
-      id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
-    };
-    const token = tokenGenerator(tokenData);
+    const {
+      firstname, lastname, email, password,
+    } = user;
     const validateUser = userSchema.validate({
       id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email, password: req.body.password,
     });
     if (validateUser.error) {
       return failureResponse(res, 400, validateUser.error.details[0].message);
     }
-    const duplicatedUser = helperFunction.findByEmail(user.email);
-    if (duplicatedUser) {
+    const text = `INSERT INTO
+    users(id, firstname, lastname, email, password)
+    VALUES($1, $2, $3, $4, $5)
+    returning id, firstname, lastname, email, password, "createdDate"`;
+
+    const values = [uuid.v1(), firstname, lastname, email, hash.hashSync(password)];
+    const checkUser = await db.query('SELECT * FROM users WHERE email=$1', [email]);
+    if (checkUser.rows.length > 0) {
       return failureResponse(res, 409, 'Email already exists');
     }
-    User.push(user);
 
+    const { rows } = await db.query(text, values);
+    User.push(user);
+    const tokenData = {
+      id: rows[0].id, firstname: rows[0].firstname, lastname: rows[0].lastname, email: rows[0].email,
+    };
+    const token = tokenGenerator(tokenData);
     const data = {
-      token, id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email,
+      token, id: rows[0].id, firstname: rows[0].firstname, lastname: rows[0].lastname, email: rows[0].email,
     };
     return successResponse(res, 201, 'User created successfully!', data);
   }

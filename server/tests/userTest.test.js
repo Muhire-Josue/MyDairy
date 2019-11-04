@@ -10,7 +10,7 @@ const { expect } = chai;
 describe('User tests', () => {
   it('should display a welcome message', (done) => {
     chai.request(server)
-      .get('/api/v1/')
+      .get('/api/v2/')
       .end((error, res) => {
         res.body.status.should.be.equal(200);
         expect(res.body.message).to.equal('welcome to MyDiary application');
@@ -26,7 +26,7 @@ describe('User tests', () => {
       password: 'user4',
     };
     chai.request(server)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(201);
@@ -40,7 +40,37 @@ describe('User tests', () => {
       firstname: 'John',
     };
     chai.request(server)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
+      .send(user)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        done();
+      });
+  });
+  it('should not signup when provided invalid values', (done) => {
+    const user = {
+      firstname: 'John',
+      lastname: '',
+      email: 'user2@example.com',
+      password: 'user4',
+    };
+    chai.request(server)
+      .post('/api/v2/auth/signup')
+      .send(user)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        done();
+      });
+  });
+  it('should not signup when provided invalid values', (done) => {
+    const user = {
+      firstname: 'John',
+      lastname: 'Doe',
+      email: 'user2example.com',
+      password: 'user4',
+    };
+    chai.request(server)
+      .post('/api/v2/auth/signup')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(400);
@@ -55,7 +85,7 @@ describe('User tests', () => {
       password: 'user4',
     };
     chai.request(server)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(409);
