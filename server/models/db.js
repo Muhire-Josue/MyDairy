@@ -10,7 +10,6 @@ const pool = new pg.Pool({
 });
 
 pool.on('connect', () => {
-  console.log('connected to the Database');
 });
 
 const dropTables = () => {
@@ -21,17 +20,14 @@ const dropTables = () => {
 
   pool
     .query(dropTablesQueries)
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       pool.end();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
       pool.end();
     });
 
   pool.on('remove', () => {
-    console.log('client removed');
     process.exit(0);
   });
 };
@@ -60,16 +56,13 @@ const createTables = () => {
 
   pool
     .query(createTablesQueries)
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       pool.end();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
       pool.end();
     });
   pool.on('remove', () => {
-    console.log('client removed');
     process.exit(0);
   });
 };

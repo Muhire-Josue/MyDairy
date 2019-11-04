@@ -2,6 +2,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../../server';
+import testData from '../helpers/mockData';
 
 chai.use(chaiHttp);
 chai.should();
@@ -19,12 +20,7 @@ describe('User tests', () => {
   });
 
   it('should be signup', (done) => {
-    const user = {
-      firstname: 'John',
-      lastname: 'Doe',
-      email: 'user2@example.com',
-      password: 'user4',
-    };
+    const user = testData[0];
     chai.request(server)
       .post('/api/v2/auth/signup')
       .send(user)
@@ -36,9 +32,7 @@ describe('User tests', () => {
   });
 
   it('should not signup when provided invalid values', (done) => {
-    const user = {
-      firstname: 'John',
-    };
+    const user = testData[1];
     chai.request(server)
       .post('/api/v2/auth/signup')
       .send(user)
@@ -48,12 +42,7 @@ describe('User tests', () => {
       });
   });
   it('should not signup when provided invalid values', (done) => {
-    const user = {
-      firstname: 'John',
-      lastname: '',
-      email: 'user2@example.com',
-      password: 'user4',
-    };
+    const user = testData[2];
     chai.request(server)
       .post('/api/v2/auth/signup')
       .send(user)
@@ -63,12 +52,7 @@ describe('User tests', () => {
       });
   });
   it('should not signup when provided invalid values', (done) => {
-    const user = {
-      firstname: 'John',
-      lastname: 'Doe',
-      email: 'user2example.com',
-      password: 'user4',
-    };
+    const user = testData[3];
     chai.request(server)
       .post('/api/v2/auth/signup')
       .send(user)
@@ -78,12 +62,7 @@ describe('User tests', () => {
       });
   });
   it('should not duplicate a user', (done) => {
-    const user = {
-      firstname: 'John',
-      lastname: 'Doe',
-      email: 'user2@example.com',
-      password: 'user4',
-    };
+    const user = testData[4];
     chai.request(server)
       .post('/api/v2/auth/signup')
       .send(user)
@@ -95,10 +74,7 @@ describe('User tests', () => {
   });
 
   it('Should login a user', (done) => {
-    const user = {
-      email: 'user2@example.com',
-      password: 'user4',
-    };
+    const user = testData[5];
     chai.request(server)
       .post('/api/v1/auth/signin')
       .send(user)
@@ -110,10 +86,7 @@ describe('User tests', () => {
   });
 
   it('Should not login non-existing user', (done) => {
-    const user = {
-      email: 'us@example.com',
-      password: 'user4',
-    };
+    const user = testData[6];
     chai.request(server)
       .post('/api/v1/auth/signin')
       .send(user)
@@ -125,10 +98,7 @@ describe('User tests', () => {
   });
 
   it('Should not login provided incorrect password', (done) => {
-    const user = {
-      email: 'user2@example.com',
-      password: 'user',
-    };
+    const user = testData[7];
     chai.request(server)
       .post('/api/v1/auth/signin')
       .send(user)
