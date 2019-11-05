@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable radix */
 import uuid from 'uuid';
-import Entry from '../models/entries';
 import entrySchema from '../validations/entryValidation';
 import successResponse from '../helpers/successResponse';
 import failureResponse from '../helpers/failureResponse';
@@ -31,7 +30,6 @@ class entryController {
     const { rows } = await db.query(text, values);
 
     let data = rows[0];
-    Entry.push(data);
     data = {
       id: data.id, title: data.title, description: data.description, createdOn: data.createdOn,
     };
@@ -78,6 +76,18 @@ class entryController {
     const { rows } = await db.query('SELECT * FROM entries WHERE id=$1', [id]);
     const entry = rows[0];
     return successResponse(res, 200, 'Diary entry', entry);
+  }
+
+  /**
+   *@description Returns all user's entries
+   * @param {object} req
+   * @param {object} res
+   * @returns {Array} diary entries
+   */
+  static async allEntries(req, res) {
+    const { rows } = await db.query('SELECT * FROM entries WHERE "userId"=$1', [req.user.id]);
+    const myentries = rows;
+    return successResponse(res, 200, 'All entries', myentries);
   }
 }
 

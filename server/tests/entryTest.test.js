@@ -164,6 +164,16 @@ describe('Entries test', () => {
       });
   });
 
+  it('should get all entries', (done) => {
+    chai.request(server)
+      .get('/api/v2/entries')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        done();
+      });
+  });
+
   it('should not delete an entry of other users', (done) => {
     chai.request(server)
       .delete(`/api/v2/entries/${entryId}`)
