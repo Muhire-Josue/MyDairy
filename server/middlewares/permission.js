@@ -1,8 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable radix */
-import helperFunction from '../helpers/helperFunction';
 import failureResponse from '../helpers/failureResponse';
-
+import db from '../models/index';
 /**
    *@description Checks if user is granted access
    * @param {object} req
@@ -11,19 +10,18 @@ import failureResponse from '../helpers/failureResponse';
    * @param {number} status
    * @returns {object} response
    */
-const permission = (req, res, next) => {
-  const id = parseInt(req.params.entryId);
-  if (!Number.isInteger(id)) {
-    return failureResponse(res, 400, 'Please provide a valid id');
-  }
-  const entry = helperFunction.findById(id);
+const permission = async (req, res, next) => {
+  const id = req.params.entryId;
+  const { rows } = await db.query('SELECT * FROM entries WHERE id=$1', [id]);
+
+  const entry = rows[0];
   if (!entry) {
     return res.status(404).json({
       status: 404,
       error: 'Entry not found',
     });
   }
-  if (entry.userId !== parseInt(req.user.id)) {
+  if (entry.userId !== req.user.id) {
     return failureResponse(res, 403, 'Operation forbiden');
   }
   next();
