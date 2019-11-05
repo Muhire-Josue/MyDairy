@@ -144,6 +144,26 @@ describe('Entries test', () => {
       });
   });
 
+  it('should be able to get an entry', (done) => {
+    chai.request(server)
+      .get(`/api/v2/entries/${entryId}`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(200);
+        done();
+      });
+  });
+
+  it('should not be able to get other users entry', (done) => {
+    chai.request(server)
+      .get(`/api/v2/entries/${entryId}`)
+      .set('Authorization', `Bearer ${otherUserToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(403);
+        done();
+      });
+  });
+
   it('should not delete an entry of other users', (done) => {
     chai.request(server)
       .delete(`/api/v2/entries/${entryId}`)
