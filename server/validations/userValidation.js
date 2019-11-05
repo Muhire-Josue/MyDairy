@@ -2,7 +2,6 @@
 import Joi from '@hapi/joi';
 
 const userSchema = Joi.object().keys({
-  id: Joi.number().required(),
   firstname: Joi.string().trim().regex(/^[a-zA-Z]{3,30}$/).min(3)
     .max(30)
     .required()

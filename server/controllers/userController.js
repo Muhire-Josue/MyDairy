@@ -35,13 +35,12 @@ class userController {
 
   static async createAccount(req, res) {
     const user = req.body;
-    user.id = User.length + 1;
     user.password = hash.hashSync(user.password);
     const {
       firstname, lastname, email, password,
     } = user;
     const validateUser = userSchema.validate({
-      id: user.id, firstname: user.firstname, lastname: user.lastname, email: user.email, password: req.body.password,
+      firstname: user.firstname, lastname: user.lastname, email: user.email, password: req.body.password,
     });
     if (validateUser.error) {
       return failureResponse(res, 400, validateUser.error.details[0].message);
@@ -51,7 +50,7 @@ class userController {
     VALUES($1, $2, $3, $4, $5)
     returning id, firstname, lastname, email, password, "createdDate"`;
 
-    const values = [uuid.v1(), firstname, lastname, email, hash.hashSync(password)];
+    const values = [uuid.v1(), firstname, lastname, email, password];
     const checkUser = await db.query('SELECT * FROM users WHERE email=$1', [email]);
     if (checkUser.rows.length > 0) {
       return failureResponse(res, 409, 'Email already exists');

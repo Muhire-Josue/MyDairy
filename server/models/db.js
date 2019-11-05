@@ -45,7 +45,7 @@ const createTables = () => {
 
   const entriesTable = `CREATE TABLE IF NOT EXISTS
       entries(
-        id SERIAL PRIMARY KEY,
+        id UUID PRIMARY KEY,
         title VARCHAR(100) NOT NULL,
         description VARCHAR(100) NULL,
         "userId" UUID NOT NULL REFERENCES users(id),
