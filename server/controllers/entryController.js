@@ -36,6 +36,23 @@ class entryController {
     };
     return successResponse(res, 201, 'Entry successfully created', data);
   }
+
+  static async modifyEntry(req, res) {
+    const id = req.params.entryId;
+    const validateEntry = entrySchema.validate({
+      title: req.body.title, description: req.body.description,
+    });
+    if (validateEntry.error) {
+      return failureResponse(res, 400, validateEntry.error.details[0].message);
+    }
+
+    const { title, description } = req.body;
+    const text = 'UPDATE entries SET title=$1, description=$2 WHERE id=$3 RETURNING *';
+    const values = [title, description, id];
+    const change = await db.query(text, values);
+    const data = change.rows;
+    return successResponse(res, 200, 'Entry successfully edited!', data);
+  }
 }
 
 export default entryController;
