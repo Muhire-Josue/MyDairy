@@ -160,7 +160,7 @@ describe('Entries test', () => {
       .delete(`/api/v2/entries/${entryId}`)
       .set('Authorization', `Bearer ${userToken}`)
       .end((error, res) => {
-        res.body.status.should.be.equal(204);
+        res.body.status.should.be.equal(200);
         expect(res.body.message).to.equal('Entry successfully deleted!');
         done();
       });
