@@ -66,6 +66,12 @@ const TestData = [
     title: 'Tuestday morning',
     descriptionsss: 'how intresting!',
   },
+  {
+    firstname: 'Josue',
+    lastname: 'Rutayisire',
+    email: 'muhirejosue09@gmail.com',
+    password: 'user4',
+  },
 ];
 
 export default TestData;

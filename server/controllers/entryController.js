@@ -2,11 +2,9 @@
 /* eslint-disable radix */
 import uuid from 'uuid';
 import Entry from '../models/entries';
-// import helperFunction from '../helpers/helperFunction';
 import entrySchema from '../validations/entryValidation';
 import successResponse from '../helpers/successResponse';
 import failureResponse from '../helpers/failureResponse';
-// import deleteResponse from '../helpers/deleteResponse';
 import db from '../models/index';
 
 class entryController {
@@ -32,7 +30,6 @@ class entryController {
     const { rows } = await db.query(text, values);
 
     let data = rows[0];
-    // data.createdOn = `${date} ${time}`;
     Entry.push(data);
     data = {
       id: data.id, title: data.title, description: data.description, createdOn: data.createdOn,

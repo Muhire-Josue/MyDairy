@@ -1,10 +1,8 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import jwt from 'jsonwebtoken';
 import server from '../../server';
-import createUser from '../helpers/createUser';
-import testData from '../helpers/mockData';
+import testData from './data/mockData';
 
 
 chai.use(chaiHttp);
@@ -12,13 +10,17 @@ chai.should();
 const { expect } = chai;
 let userToken = '';
 describe('Entries test', () => {
-  before(async () => {
-    try {
-      const normalUser = await createUser();
-      userToken = jwt.sign(normalUser, process.env.API_SERCRET_KEY);
-    } catch (error) {
-      console.log(error);
-    }
+  it('should be signup', (done) => {
+    const user = testData[15];
+    chai.request(server)
+      .post('/api/v2/auth/signup')
+      .send(user)
+      .end((error, res) => {
+        userToken = res.body.data.token;
+        res.body.status.should.be.equal(201);
+        expect(res.body.message).to.equal('User created successfully!');
+        done();
+      });
   });
   it('should add an entry', (done) => {
     const entry = testData[8];
@@ -30,6 +32,20 @@ describe('Entries test', () => {
       .end((error, res) => {
         res.body.status.should.be.equal(201);
         expect(res.body.message).to.equal('Entry successfully created');
+        done();
+      });
+  });
+
+  it('should add an entry', (done) => {
+    const entry = testData[8];
+
+    chai.request(server)
+      .post('/api/v1/entries')
+      .send(entry)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Incorrect Route');
         done();
       });
   });
