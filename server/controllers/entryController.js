@@ -71,7 +71,7 @@ class entryController {
    *@description Returns a diary entry of a user
    * @param {object} req
    * @param {object} res
-   * @returns {object} response
+   * @returns {object} diary entry
    */
   static async getEntry(req, res) {
     const id = req.params.entryId;
