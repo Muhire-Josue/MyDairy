@@ -11,6 +11,7 @@ router.post('/api/v2/auth/signup', userController.createAccount);
 router.post('/api/v1/auth/signin', userController.Login);
 router.post('/api/v2/entries', auth, entryController.addEntry);
 router.patch('/api/v2/entries/:entryId', auth, permission, entryController.modifyEntry);
+router.delete('/api/v2/entries/:entryId', auth, permission, entryController.deleteEntry);
 
 
 export default router;

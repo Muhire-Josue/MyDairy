@@ -143,4 +143,36 @@ describe('Entries test', () => {
         done();
       });
   });
+
+  it('should not delete an entry of other users', (done) => {
+    chai.request(server)
+      .delete(`/api/v2/entries/${entryId}`)
+      .set('Authorization', `Bearer ${otherUserToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(403);
+        expect(res.body.error).to.equal('Operation forbiden');
+        done();
+      });
+  });
+
+  it('should delete an entry', (done) => {
+    chai.request(server)
+      .delete(`/api/v2/entries/${entryId}`)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(204);
+        expect(res.body.message).to.equal('Entry successfully deleted!');
+        done();
+      });
+  });
+  it('should not delete an entry provided non-existing id', (done) => {
+    chai.request(server)
+      .delete('/api/v2/entries/29c713a0-ffca-11e9-b351-293cd06724c7')
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(404);
+        expect(res.body.error).to.equal('Entry not found');
+        done();
+      });
+  });
 });

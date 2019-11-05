@@ -5,6 +5,7 @@ import Entry from '../models/entries';
 import entrySchema from '../validations/entryValidation';
 import successResponse from '../helpers/successResponse';
 import failureResponse from '../helpers/failureResponse';
+import deleteResponse from '../helpers/deleteResponse';
 import db from '../models/index';
 
 class entryController {
@@ -52,6 +53,18 @@ class entryController {
     const change = await db.query(text, values);
     const data = change.rows;
     return successResponse(res, 200, 'Entry successfully edited!', data);
+  }
+
+  /**
+   *@description Deletes a diary entry of a user
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} response
+   */
+  static async deleteEntry(req, res) {
+    const id = req.params.entryId;
+    await db.query('DELETE FROM entries WHERE id=$1', [id]);
+    deleteResponse(res, 'Entry successfully deleted!');
   }
 }
 
