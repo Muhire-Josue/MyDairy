@@ -8,7 +8,7 @@
 const deleteResponse = (response, message) => (
   response.status(200)
     .json({
-      status: 204,
+      status: 200,
       message,
     })
 );
