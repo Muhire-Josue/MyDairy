@@ -1,2 +1,0 @@
-const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiSm9obiIsImxhc3RuYW1lIjoiRG9lIiwiZW1haWwiOiJ1c2VyMUBleGFsLmNvbSIsImlhdCI6MTU3MTA1NTA4NH0.BiXvFPr3ksJ_HR4YhyVyuYab3mfckkcWrz6FPDxoC-U';
-export default userToken;
