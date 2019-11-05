@@ -66,6 +66,19 @@ class entryController {
     await db.query('DELETE FROM entries WHERE id=$1', [id]);
     deleteResponse(res, 'Entry successfully deleted!');
   }
+
+  /**
+   *@description Returns a diary entry of a user
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} response
+   */
+  static async getEntry(req, res) {
+    const id = req.params.entryId;
+    const { rows } = await db.query('SELECT * FROM entries WHERE id=$1', [id]);
+    const entry = rows[0];
+    return successResponse(res, 200, 'Diary entry', entry);
+  }
 }
 
 export default entryController;
