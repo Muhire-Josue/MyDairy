@@ -2,7 +2,6 @@ import express from 'express';
 import userController from '../controllers/userController';
 import entryController from '../controllers/entryController';
 import auth from '../middlewares/auth';
-// import permission from '../middlewares/permission';
 
 const router = express.Router();
 
