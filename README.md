@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Muhire-Josue/MyDairy.svg?branch=develop)](https://travis-ci.org/Muhire-Josue/MyDairy) [![Coverage Status](https://coveralls.io/repos/github/Muhire-Josue/MyDairy/badge.svg?branch=develop)](https://coveralls.io/github/Muhire-Josue/MyDairy?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/08e6aa069785b3d9bc40/maintainability)](https://codeclimate.com/github/Muhire-Josue/MyDairy/maintainability)
+[![Build Status](https://travis-ci.org/Muhire-Josue/MyDairy.svg?branch=develop)](https://travis-ci.org/Muhire-Josue/MyDairy) [![Coverage Status](https://coveralls.io/repos/github/Muhire-Josue/MyDairy/badge.svg)](https://coveralls.io/github/Muhire-Josue/MyDairy) [![Maintainability](https://api.codeclimate.com/v1/badges/08e6aa069785b3d9bc40/maintainability)](https://codeclimate.com/github/Muhire-Josue/MyDairy/maintainability)
 
 # MyDairy
 MyDiary is an online journal where users can pen down their thoughts and feelings.  
