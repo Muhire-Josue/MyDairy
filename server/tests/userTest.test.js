@@ -76,7 +76,7 @@ describe('User tests', () => {
   it('Should login a user', (done) => {
     const user = testData[5];
     chai.request(server)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(200);
@@ -88,7 +88,7 @@ describe('User tests', () => {
   it('Should not login non-existing user', (done) => {
     const user = testData[6];
     chai.request(server)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(404);
@@ -100,7 +100,7 @@ describe('User tests', () => {
   it('Should not login provided incorrect password', (done) => {
     const user = testData[7];
     chai.request(server)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((error, res) => {
         res.body.status.should.be.equal(400);

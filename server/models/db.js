@@ -49,6 +49,7 @@ const createTables = () => {
         title VARCHAR(100) NOT NULL,
         description VARCHAR(100) NULL,
         "userId" UUID NOT NULL REFERENCES users(id),
+        "editedOn" TIMESTAMP NULL,
         "createdDate" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)`;
 
 
