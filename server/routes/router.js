@@ -13,6 +13,7 @@ router.post('/api/v2/entries', auth, entryController.addEntry);
 router.patch('/api/v2/entries/:entryId', auth, permission, entryController.modifyEntry);
 router.delete('/api/v2/entries/:entryId', auth, permission, entryController.deleteEntry);
 router.get('/api/v2/entries/:entryId', auth, permission, entryController.getEntry);
+router.get('/api/v2/entries', auth, entryController.allEntries);
 
 
 export default router;
