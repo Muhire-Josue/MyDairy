@@ -7,6 +7,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 ### Links
 ##### gh-pages:  https://muhire-josue.github.io/MyDairy/UI/
 ##### heroku:  https://mydiary-api-host.herokuapp.com
+##### API Documentation:  https://documenter.getpostman.com/view/3997258/SW17RaCo?version=latest
 
 ### Requirements
 - `Nodejs` - a JavaScript run-time environment that executes JavaScript code outside of a browser
