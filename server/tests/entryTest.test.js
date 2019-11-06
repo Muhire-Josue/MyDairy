@@ -38,7 +38,7 @@ describe('Entries test', () => {
       });
   });
 
-  it('should add an entry', (done) => {
+  it('should  not add an entry for incorrect URLs', (done) => {
     const entry = testData[8];
 
     chai.request(server)
@@ -48,6 +48,20 @@ describe('Entries test', () => {
       .end((error, res) => {
         res.body.status.should.be.equal(400);
         expect(res.body.error).to.equal('Incorrect Route');
+        done();
+      });
+  });
+
+  it('should not add duplicated entry', (done) => {
+    const entry = testData[8];
+
+    chai.request(server)
+      .post('/api/v2/entries')
+      .send(entry)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(409);
+        expect(res.body.error).to.equal('Title already exists');
         done();
       });
   });
