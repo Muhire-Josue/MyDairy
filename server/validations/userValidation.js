@@ -7,22 +7,10 @@ const userSchema = Joi.object().keys({
     .required()
     .error((errors) => {
       errors.forEach((err) => {
-        switch (err.type) {
-          case 'any.empty':
-            err.message = 'Value should not be empty!';
-            break;
-          case 'any.required':
-            err.message = 'Value is required!';
-            break;
-          case 'string.base':
-            err.message = 'Value should be a string of characters!';
-            break;
-          case 'string.regex.base':
-            err.message = 'Characters should be between 3-30';
-            break;
-          default:
-            break;
-        }
+        if (err.type === 'any.empty') { err.message = 'Value should not be empty!'; }
+        if (err.type === 'any.required') { err.message = 'Value is required!'; }
+        if (err.type === 'string.base') { err.message = 'Value should be a string of characters!'; }
+        if (err.type === 'string.regex.base') { err.message = 'Characters should be between 3-30'; }
       });
       return errors;
     }),
@@ -31,44 +19,20 @@ const userSchema = Joi.object().keys({
     .required()
     .error((errors) => {
       errors.forEach((err) => {
-        switch (err.type) {
-          case 'any.empty':
-            err.message = 'Value should not be empty!';
-            break;
-          case 'any.required':
-            err.message = 'Value is required!';
-            break;
-          case 'string.base':
-            err.message = 'Value should be a string of characters!';
-            break;
-          case 'string.regex.base':
-            err.message = 'Characters should be between 3-30';
-            break;
-          default:
-            break;
-        }
+        if (err.type === 'any.empty') { err.message = 'Value should not be empty!'; }
+        if (err.type === 'any.required') { err.message = 'Value is required!'; }
+        if (err.type === 'string.base') { err.message = 'Value should be a string of characters!'; }
+        if (err.type === 'string.regex.base') { err.message = 'Characters should be between 3-30'; }
       });
       return errors;
     }),
   email: Joi.string().email().required()
     .error((errors) => {
       errors.forEach((err) => {
-        switch (err.type) {
-          case 'any.empty':
-            err.message = 'Value should not be empty!';
-            break;
-          case 'any.required':
-            err.message = 'Value is required!';
-            break;
-          case 'string.base':
-            err.message = 'Value should be a string of characters!';
-            break;
-          case 'string.email':
-            err.message = 'Please provide a valid email!';
-            break;
-          default:
-            break;
-        }
+        if (err.type === 'any.empty') { err.message = 'Value should not be empty!'; }
+        if (err.type === 'any.required') { err.message = 'Value is required!'; }
+        if (err.type === 'string.base') { err.message = 'Value should be a string of characters!'; }
+        if (err.type === 'string.email') { err.message = 'Please provide a valid email!'; }
       });
       return errors;
     }),
