@@ -11,8 +11,6 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 
 ### Requirements
 - `Nodejs` - a JavaScript run-time environment that executes JavaScript code outside of a browser
-- `NPM` - a package manager for the JavaScript programming language
-- `Git` - version-control system for tracking changes in source code during software development
 - `POSTGRES` - a database management system for data persistence
 
 ### SETUP
@@ -53,3 +51,7 @@ npm test
 ### Pivotal tracker stories
 - Follow this [Link](https://www.pivotaltracker.com/n/projects/2400380)
 
+### Technologies used
+
+- `NPM` - a package manager for the JavaScript programming language
+- `Git` - version-control system for tracking changes in source code during software development
