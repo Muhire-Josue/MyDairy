@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 import hash from 'bcrypt-nodejs';
 import dotenv from 'dotenv';
