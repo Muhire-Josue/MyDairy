@@ -12,14 +12,15 @@ import db from '../models/index';
    */
 const permission = async (req, res, next) => {
   const id = req.params.entryId;
+
+  if (id.length !== 36) {
+    return failureResponse(res, 400, 'Invalid ID');
+  }
   const { rows } = await db.query('SELECT * FROM entries WHERE id=$1', [id]);
 
   const entry = rows[0];
   if (!entry) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Entry not found',
-    });
+    return failureResponse(res, 404, 'Entry not found');
   }
   if (entry.userId !== req.user.id) {
     return failureResponse(res, 403, 'Operation forbiden');

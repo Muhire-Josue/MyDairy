@@ -12,7 +12,7 @@
     "createTables": "babel-node ./server/models/db createTables",
     "start": "babel-node app.js",
     "start:dev": "SET \"NODE_ENV=dev\" && nodemon app.js --exec babel-node --presets @babel/preset-env",
-    "test": "npm run dropTables:test && npm run createTables:test && SET \"NODE_ENV=test\" && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/**.js",
+    "test": "npm run dropTables:test && npm run createTables:test && SET \"NODE_ENV=test\" && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/**/**.test.js",
     "test:CI": "npm run dropTables && npm run createTables && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 10000 --exit server/tests/**.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

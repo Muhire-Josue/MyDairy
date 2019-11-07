@@ -72,6 +72,16 @@ const TestData = [
     email: 'muhirejosue09@gmail.com',
     password: 'user4',
   },
+  {
+    title: 'firstname',
+    description: 'lastname',
+  },
+  {
+    firstname: 'firstname',
+    lastname: 'lastname',
+    email: 'user@example.ocm',
+    password: 'password',
+  },
 ];
 
 export default TestData;
