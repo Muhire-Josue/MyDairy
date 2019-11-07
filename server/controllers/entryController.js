@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable radix */
 import uuid from 'uuid';
 import successResponse from '../helpers/successResponse';
 import deleteResponse from '../helpers/deleteResponse';

@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import failureResponse from '../helpers/failureResponse';
 
@@ -23,7 +22,7 @@ const auth = (req, res, next) => {
       return failureResponse(res, 401, 'Invalid token');
     }
     req.user = data;
-    next();
+    return next();
   });
 };
 
