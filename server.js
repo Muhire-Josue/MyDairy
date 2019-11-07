@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
 import express from 'express';
-import userRoutes from './server/routes/userRouter';
-import entryRoutes from './server/routes/entryRouter';
+import routes from './server/routes/index';
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
-app.use(userRoutes);
-app.use(entryRoutes);
+app.use(routes);
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
 app.use((req, res, next) => {
   if (!req.route) {
