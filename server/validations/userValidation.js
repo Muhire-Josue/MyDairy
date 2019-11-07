@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import Joi from '@hapi/joi';
 
 const userSchema = Joi.object().keys({

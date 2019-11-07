@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable radix */
 import failureResponse from '../helpers/failureResponse';
 import db from '../models/index';
 /**
@@ -25,6 +23,6 @@ const permission = async (req, res, next) => {
   if (entry.userId !== req.user.id) {
     return failureResponse(res, 403, 'Operation forbiden');
   }
-  next();
+  return next();
 };
 export default permission;

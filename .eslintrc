@@ -6,5 +6,7 @@
     "rules": {
         "linebreak-style": 0,
         "global-require": 0,
+        "no-param-reassign":"off",
+        "max-len":"off",
         "eslint linebreak-style": [0, "error", "windows"]}
 }
