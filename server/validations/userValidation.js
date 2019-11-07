@@ -72,25 +72,7 @@ const userSchema = Joi.object().keys({
       });
       return errors;
     }),
-  password: Joi.string().trim().min(3).required()
-    .error((errors) => {
-      errors.forEach((err) => {
-        switch (err.type) {
-          case 'any.empty':
-            err.message = 'Value should not be empty!';
-            break;
-          case 'any.required':
-            err.message = 'Value is required!';
-            break;
-          case 'string.base':
-            err.message = 'Value should be a string of characters!';
-            break;
-          default:
-            break;
-        }
-      });
-      return errors;
-    }),
+  password: Joi.string().trim().min(3).required(),
 });
 
 export default userSchema;
