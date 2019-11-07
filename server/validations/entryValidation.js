@@ -15,9 +15,6 @@ const entrySchema = Joi.object().keys({
           case 'string.base':
             err.message = 'Value should be a string of characters!';
             break;
-          case 'string.trim':
-            err.message = 'Value should not contain whitespaces!';
-            break;
           default:
             break;
         }
@@ -36,9 +33,6 @@ const entrySchema = Joi.object().keys({
             break;
           case 'string.base':
             err.message = 'Value should be a string of characters!';
-            break;
-          case 'string.trim':
-            err.message = 'Value should not contain whitespaces!';
             break;
           default:
             break;

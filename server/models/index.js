@@ -10,8 +10,6 @@ const pool = new pg.Pool({
 
 pool.on('connect', () => {
 });
-
-// https://www.codementor.io/olawalealadeusi896
 export default {
   query(text, params) {
     return new Promise((resolve, reject) => {

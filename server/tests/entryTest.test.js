@@ -120,6 +120,20 @@ describe('Entries test', () => {
       });
   });
 
+  it('should not modify entry provided invalid ID', (done) => {
+    const entry = testData[12];
+
+    chai.request(server)
+      .patch('/api/v2/entries/abc')
+      .send(entry)
+      .set('Authorization', `Bearer ${userToken}`)
+      .end((error, res) => {
+        res.body.status.should.be.equal(400);
+        expect(res.body.error).to.equal('Invalid ID');
+        done();
+      });
+  });
+
   it('should not modify an entry of other users', (done) => {
     const entry = testData[13];
 

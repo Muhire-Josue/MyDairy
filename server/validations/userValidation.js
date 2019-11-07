@@ -17,9 +17,6 @@ const userSchema = Joi.object().keys({
           case 'string.base':
             err.message = 'Value should be a string of characters!';
             break;
-          case 'string.trim':
-            err.message = 'Value should be not contain whitespaces!';
-            break;
           case 'string.regex.base':
             err.message = 'Characters should be between 3-30';
             break;
@@ -44,9 +41,6 @@ const userSchema = Joi.object().keys({
           case 'string.base':
             err.message = 'Value should be a string of characters!';
             break;
-          case 'string.trim':
-            err.message = 'Value should not contain whitespaces!';
-            break;
           case 'string.regex.base':
             err.message = 'Characters should be between 3-30';
             break;
@@ -69,9 +63,6 @@ const userSchema = Joi.object().keys({
           case 'string.base':
             err.message = 'Value should be a string of characters!';
             break;
-          case 'string.trim':
-            err.message = 'Value should be not contain whitespaces!';
-            break;
           case 'string.email':
             err.message = 'Please provide a valid email!';
             break;
@@ -93,9 +84,6 @@ const userSchema = Joi.object().keys({
             break;
           case 'string.base':
             err.message = 'Value should be a string of characters!';
-            break;
-          case 'string.trim':
-            err.message = 'Value should be not contain whitespaces!';
             break;
           default:
             break;
